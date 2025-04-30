@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClueQuest AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            min-height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <nav class="bg-gray-900 p-4">
+        <div class="max-w-4xl mx-auto flex justify-between items-center">
+            <a href="/" class="text-xl font-bold">ClueQuest AI</a>
+            <div class="space-x-4">
+                {% if current_user.is_authenticated %}
+                    <span class="text-gray-400">Welcome, {{ current_user.username }}</span>
+                    <a href="/logout" class="text-red-400 hover:text-red-300">Logout</a>
+                {% else %}
+                    <a href="/login" class="text-blue-400 hover:text-blue-300">Login</a>
+                    <a href="/signup" class="text-blue-400 hover:text-blue-300">Sign Up</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    <main class="p-4">
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html> 
